@@ -11,7 +11,7 @@ namespace PraktyczneKursy.Controllers
         // GET: Home
         public ActionResult Index()
         {
-            //comment
+            //comment edited from DevOps
             return View();
         }
     }
