@@ -12,6 +12,7 @@ namespace PraktyczneKursy.Controllers
         public ActionResult Index()
         {
             //comment edited from DevOps
+            //logging functionality in progress
             return View();
         }
     }
