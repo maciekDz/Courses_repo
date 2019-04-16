@@ -18,5 +18,6 @@ namespace PraktyczneKursy.Models
         public decimal CoursePrice { get; set; }
         public bool Bestseller { get; set; }
         public bool Hidden { get; set; }
+        public virtual Category Category { get; set; }
     }
 }
