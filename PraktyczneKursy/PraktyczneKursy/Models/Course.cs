@@ -16,7 +16,7 @@ namespace PraktyczneKursy.Models
         public string CourseTitle { get; set; }
         [Required(ErrorMessage = "Specify Author Name")]
         [StringLength(100)]
-        public int CourseAuthor { get; set; }
+        public string CourseAuthor { get; set; }
         public DateTime InsertDate { get; set; }
         [StringLength(100)]
         public string FileOrPicturePhotoName { get; set; }
