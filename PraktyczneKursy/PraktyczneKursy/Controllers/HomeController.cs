@@ -14,6 +14,7 @@ namespace PraktyczneKursy.Controllers
 
         public ActionResult Index()
         {
+            //comment
             var categoryList = db.Categories.ToList();
             return View();
         }
