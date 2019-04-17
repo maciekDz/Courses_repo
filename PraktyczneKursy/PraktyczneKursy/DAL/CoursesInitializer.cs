@@ -4,19 +4,17 @@ using System.Linq;
 using System.Web;
 using System.Data.Entity;
 using PraktyczneKursy.Models;
+//using System.Configuration;
+using PraktyczneKursy.Migrations;
+using System.Data.Entity.Migrations;
 
 namespace PraktyczneKursy.DAL
 {
-    public class CoursesInitializer : DropCreateDatabaseAlways<CoursesContext>
+    public class CoursesInitializer : MigrateDatabaseToLatestVersion<CoursesContext, Configuration>
     {
-        protected override void Seed(CoursesContext context)
-        {
-            SeedCoursesData(context);
+ 
 
-            base.Seed(context);
-        }
-
-        private void SeedCoursesData(CoursesContext context)
+        public static void SeedCoursesData(CoursesContext context)
         {
             var categories = new List<Category>
             {
@@ -29,7 +27,7 @@ namespace PraktyczneKursy.DAL
                 new Category(){CategoryId=7,CategoryName="c#",IconFileName="c#.png",CategoryDescription="descr c#"}
             };
 
-            categories.ForEach(c => context.Categories.Add(c));
+            categories.ForEach(c => context.Categories.AddOrUpdate(c));
             context.SaveChanges();
 
             var courses = new List<Course>
@@ -43,7 +41,7 @@ namespace PraktyczneKursy.DAL
                 new Course(){CourseId=7,CourseAuthor="Author7",CourseTitle="course7",CategotyId=7,CoursePrice=99,Bestseller=true,FileOrPicturePhotoName="file7.png",InsertDate=DateTime.Now,CourseDescription="descr 7"},
             };
 
-            courses.ForEach(c => context.Courses.Add(c));
+            courses.ForEach(c => context.Courses.AddOrUpdate(c));
             context.SaveChanges();
         }
     }

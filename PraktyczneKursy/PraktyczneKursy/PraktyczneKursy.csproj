@@ -150,6 +150,23 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201904171902036_InitialCreate.cs" />
+    <Compile Include="Migrations\201904171902036_InitialCreate.Designer.cs">
+      <DependentUpon>201904171902036_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201904172035572_addingShortDescriptionFieldInCourseTable.cs" />
+    <Compile Include="Migrations\201904172035572_addingShortDescriptionFieldInCourseTable.Designer.cs">
+      <DependentUpon>201904172035572_addingShortDescriptionFieldInCourseTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201904172059247_addingTestField.cs" />
+    <Compile Include="Migrations\201904172059247_addingTestField.Designer.cs">
+      <DependentUpon>201904172059247_addingTestField.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201904172100456_deletingTestField.cs" />
+    <Compile Include="Migrations\201904172100456_deletingTestField.Designer.cs">
+      <DependentUpon>201904172100456_deletingTestField.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\Course.cs" />
     <Compile Include="Models\Order.cs" />
@@ -188,6 +205,20 @@
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\index.d.ts" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201904171902036_InitialCreate.resx">
+      <DependentUpon>201904171902036_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904172035572_addingShortDescriptionFieldInCourseTable.resx">
+      <DependentUpon>201904172035572_addingShortDescriptionFieldInCourseTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904172059247_addingTestField.resx">
+      <DependentUpon>201904172059247_addingTestField.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904172100456_deletingTestField.resx">
+      <DependentUpon>201904172100456_deletingTestField.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
