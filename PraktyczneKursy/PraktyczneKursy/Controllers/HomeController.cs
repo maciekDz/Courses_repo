@@ -14,10 +14,7 @@ namespace PraktyczneKursy.Controllers
 
         public ActionResult Index()
         {
-            //test comment
-            Category category = new Category { CategoryName = "asp.net mvc", IconFileName = "aspNetMvc.png", CategoryDescription = "Description" };
-            db.Categories.Add(category);
-            db.SaveChanges();
+            var categoryList = db.Categories.ToList();
             return View();
         }
     }
