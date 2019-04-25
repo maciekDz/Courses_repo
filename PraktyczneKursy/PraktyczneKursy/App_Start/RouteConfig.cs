@@ -11,7 +11,13 @@ namespace PraktyczneKursy
     {
         public static void RegisterRoutes(RouteCollection routes)
         {
+            routes.IgnoreRoute("Glimpse.axd");
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
+
+            routes.MapRoute(
+                name: "StaticPages",
+                url: "page/{name}.cshtml",
+                defaults: new { controller = "Home", action = "StaticPages" });
 
             routes.MapRoute(
                 name: "Default",

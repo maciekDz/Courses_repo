@@ -18,5 +18,10 @@ namespace PraktyczneKursy.Controllers
             var categoryList = db.Categories.ToList();
             return View();
         }
+
+        public ActionResult StaticPages(string name)
+        {
+            return View(name);
+        }
     }
 }

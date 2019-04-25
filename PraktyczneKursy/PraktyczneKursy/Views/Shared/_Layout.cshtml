@@ -12,7 +12,7 @@
                 Koszyk (0)
                 <span></span>
             </a>
-            <a id="indexHeaderLogo" href="link">
+            <a id="indexHeaderLogo" href="@Url.Content("~/")">
                 <img src="@Url.Content("~/Content/Images/logo.png")" class="center" />
             </a>
         </div>
@@ -25,12 +25,13 @@
     <footer>
         <nav>
             <ul>
-                <li><a href="link">O nas</a></li>
-                <li><a href="link">Społeczność</a></li>
-                <li><a href="link">Opinie</a></li>
-                <li><a href="link">Pomoc</a></li>
-                <li><a href="link">Regulamin</a></li>
-                <li><a href="link">Kontakt</a></li>
+                @*<li>@Html.ActionLink("About Us","StaticPages","Home",new { name="AboutUs"},null)</li>*@
+                <li><a href="@Url.Action("StaticPages","Home",new { name="AboutUs"})" style="">About Us</a></li>
+                <li><a href="@Url.Action("StaticPages","Home",new { name="Comunity"})" style="">Comunity</a></li>
+                <li><a href="@Url.Action("StaticPages","Home",new { name="Reviews"})" style="">Reviews</a></li>
+                <li><a href="@Url.Action("StaticPages","Home",new { name="Help"})" style="">Help</a></li>
+                <li><a href="@Url.Action("StaticPages","Home",new { name="Regulations"})" style="">Regulations</a></li>
+                <li><a href="@Url.Action("StaticPages","Home",new { name="ContactUs"})" style="">Contact Us</a></li>
             </ul>
         </nav>
         <div id="footerLogo">
