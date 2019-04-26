@@ -18,7 +18,7 @@ namespace PraktyczneKursy.DAL
         {
             var categories = new List<Category>
             {
-                new Category(){CategoryId=1,CategoryName="asp",IconFileName="asp.png",CategoryDescription="descr asp"},
+                new Category(){CategoryId=1,CategoryName="asp1",IconFileName="asp.png",CategoryDescription="descr asp"},
                 new Category(){CategoryId=2,CategoryName="java",IconFileName="java.png",CategoryDescription="descr java"},
                 new Category(){CategoryId=3,CategoryName="php",IconFileName="php.png",CategoryDescription="descr php"},
                 new Category(){CategoryId=4,CategoryName="html",IconFileName="html.png",CategoryDescription="descr html"},

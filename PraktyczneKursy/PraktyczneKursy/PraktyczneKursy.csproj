@@ -278,6 +278,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Infrastructure\AppConfig.cs" />
     <Compile Include="Migrations\201904171902036_InitialCreate.cs" />
     <Compile Include="Migrations\201904171902036_InitialCreate.Designer.cs">
       <DependentUpon>201904171902036_InitialCreate.cs</DependentUpon>

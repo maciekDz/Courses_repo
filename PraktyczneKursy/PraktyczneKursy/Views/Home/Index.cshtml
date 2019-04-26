@@ -10,7 +10,8 @@
         {
 
             <li>
-                <a href="@Url.Action("List","Courses", new { categoryName=category.CategoryName.ToLower()})" style="background-image: url(../Content/Kategorie/aspnet.png); ">
+                <a href="@Url.Action("List","Courses", new { categoryName=category.CategoryName.ToLower()})" 
+                   style="background-image: url(../Content/Kategorie/aspnet.png); ">
                     @category.CategoryName
                 </a>
             </li>
