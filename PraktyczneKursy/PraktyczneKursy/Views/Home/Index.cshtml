@@ -1,4 +1,5 @@
 ﻿@model PraktyczneKursy.ViewModels.HomeViewModel
+    @using PraktyczneKursy.Infrastructure
 
 @{ 
     ViewBag.Title = "Praktyczne Kursy";
@@ -11,7 +12,7 @@
 
             <li>
                 <a href="@Url.Action("List","Courses", new { categoryName=category.CategoryName.ToLower()})" 
-                   style="background-image: url(../Content/Kategorie/aspnet.png); ">
+                   style="background-image: url(@Url.CategoryIconPath(category.IconFileName)); ">
                     @category.CategoryName
                 </a>
             </li>
@@ -24,95 +25,51 @@
     </a>
 </nav>
 
-    <section>
-        <ul class="KursyTrzyKolumny duzaListaKursy">
+<section>
+    <ul class="KursyTrzyKolumny duzaListaKursy">
+        @foreach (var brandNew in Model.BrandNew)
+        {
             <li>
                 <article>
-                    <a class="dodajDoKoszykaLink" href="link">
+                    <a class="dodajDoKoszykaLink" href="@Url.Action("AddToCart","Cart",new {id=brandNew.CourseId })">
                         <img src="../Content/Images/koszyk.png" />
                     </a>
-                    <a class="kursSzczegolyLink" href="link">
-                        <div class="bestsellerFlag"></div>
-                        <img class="kurs" src="../Content/Kursy/obrazekcss.png" />
-                        <h1>
-                            Tutaj będzie tytuł
-                        </h1>
-                    </a>
-                </article>
-            </li>
-            <li>
-                <article>
-                    <a class="dodajDoKoszykaLink" href="link">
-                        <img src="../Content/Images/koszyk.png" />
-                    </a>
-                    <a class="kursSzczegolyLink" href="link">
-                        <div class="bestsellerFlag"></div>
-                        <img class="kurs" src="../Content/Kursy/obrazekhtml.png" />
-                        <h1>
-                            Tutaj będzie tytuł
-                        </h1>
-                    </a>
-                </article>
-            </li>
-            <li>
-                <article>
-                    <a class="dodajDoKoszykaLink" href="link">
-                        <img src="../Content/Images/koszyk.png" />
-                    </a>
-                    <a class="kursSzczegolyLink" href="link">
-                        <div class="bestsellerFlag"></div>
-                        <img class="kurs" src="../Content/Kursy/obrazekjquery.png" />
-                        <h1>
-                            Tutaj będzie tytuł
-                        </h1>
-                    </a>
-                </article>
-            </li>
-        </ul>
-    </section>
-    <section>
-        <ul class="KursyTrzyKolumny duzaListaKursy">
-            <li>
-                <article>
-                    <a class="dodajDoKoszykaLink" href="link">
-                        <img src="../Content/Images/koszyk.png" />
-                    </a>
-                    <a class="kursSzczegolyLink" href="link">
+                    <a class="kursSzczegolyLink" href="@Url.Action("Details","CoursesController", new { id=brandNew.CourseId})">
                         <div class="newFlag"></div>
-                        <img class="kurs" src="../Content/Kursy/obrazekaspnet.png" />
+                        <img class="kurs" src="@Url.ImagePath(brandNew.FileOrPicturePhotoName)" />
                         <h1>
-                            Tutaj będzie tytuł
+                            @brandNew.CourseTitle - @brandNew.CourseAuthor
                         </h1>
                     </a>
                 </article>
             </li>
+
+        }
+
+
+    </ul>
+</section>
+<section>
+    <ul class="KursyTrzyKolumny duzaListaKursy">
+        @foreach (var bestSeller in Model.Bestsellers)
+        {
             <li>
                 <article>
-                    <a class="dodajDoKoszykaLink" href="link">
+                    <a class="dodajDoKoszykaLink" href="@Url.Action("AddToCart","Cart",new {id=bestSeller.CourseId })">
                         <img src="../Content/Images/koszyk.png" />
                     </a>
-                    <a class="kursSzczegolyLink" href="link">
-                        <div class="newFlag"></div>
-                        <img class="kurs" src="../Content/Kursy/obrazekcsharp.png" />
+                    <a class="kursSzczegolyLink" href="@Url.Action("Details","CoursesController", new { id=bestSeller.CourseId})">
+                        <div class="bestsellerFlag"></div>
+                        <img class="kurs" src="@Url.ImagePath(bestSeller.FileOrPicturePhotoName)" />
                         <h1>
-                            Tutaj będzie tytuł
+                            @bestSeller.CourseTitle - @bestSeller.CourseAuthor
                         </h1>
                     </a>
                 </article>
             </li>
-            <li>
-                <article>
-                    <a class="dodajDoKoszykaLink" href="link">
-                        <img src="../Content/Images/koszyk.png" />
-                    </a>
-                    <a class="kursSzczegolyLink" href="link">
-                        <div class="newFlag"></div>
-                        <img class="kurs" src="../Content/Kursy/obrazekmvc.png" />
-                        <h1>
-                            Tutaj będzie tytuł
-                        </h1>
-                    </a>
-                </article>
-            </li>
-        </ul>
-    </section>
+
+        }
+
+
+    </ul>
+</section>

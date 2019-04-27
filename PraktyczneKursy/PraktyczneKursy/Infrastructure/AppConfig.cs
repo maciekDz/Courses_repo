@@ -6,11 +6,11 @@ using System.Web;
 
 namespace PraktyczneKursy.Infrastructure
 {
-    public class AppConfig
+    public static class AppConfig
     {
         private static string _categoryIconFolder = ConfigurationManager.AppSettings["CategoryIconFolder"];
 
-        private static string CategoryIconFolder
+        public static string CategoryIconFolder
         {
             get
             {
@@ -20,15 +20,13 @@ namespace PraktyczneKursy.Infrastructure
 
         private static string _imageFolder = ConfigurationManager.AppSettings["ImageFolder"];
 
-        private static string ImageFolder
+        public static string ImageFolder
         {
             get
             {
                 return _imageFolder;
             }
         }
-
-
 
     }
 }

@@ -16,7 +16,7 @@ namespace PraktyczneKursy.Migrations
 
         protected override void Seed(PraktyczneKursy.DAL.CoursesContext context)
         {
-            CoursesInitializer.SeedCoursesData(context);
+            //CoursesInitializer.SeedCoursesData(context);
 
 
 

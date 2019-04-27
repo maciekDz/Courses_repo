@@ -6,20 +6,16 @@ using System.Web.Mvc;
 
 namespace PraktyczneKursy.Controllers
 {
-    public class CoursesController : Controller
+    public class CartController : Controller
     {
-        // GET: Courses
+        // GET: Cart
         public ActionResult Index()
         {
             return View();
         }
 
-        public ActionResult List(string CategoryName)
-        {
-            return View();
-        }
-
-        public ActionResult Details(string id)
+        
+            public ActionResult AddToCart(string id)
         {
             return View();
         }
