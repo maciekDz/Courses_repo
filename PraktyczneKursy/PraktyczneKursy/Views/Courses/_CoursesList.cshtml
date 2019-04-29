@@ -14,13 +14,25 @@
                 {
                     <div class="bestsellerFlag"></div>
                 }
+
+                @*<a class="kursSzczegolyLink" href="@Url.Action("Details","Courses",new { id=course.CourseId.ToString()})">
+                    <img class="kurs" src="@Url.ImagePath(course.FileOrPicturePhotoName)" />
+                    <h1>
+                        @course.CourseAuthor - @course.CourseTitle
+                    </h1>
+
+                </a>*@
+
+                @* class="kurs" winowajca. trzeba wysledzic*@
                 <a class="kursSzczegolyLink" href="@Url.Action("Details","Courses",new { id=course.CourseId.ToString()})">
                     <img class="kurs" src="@Url.ImagePath(course.FileOrPicturePhotoName)" />
                     <h1>
                         @course.CourseAuthor - @course.CourseTitle
                     </h1>
+
                 </a>
             </article>
+
         </li>
     }
 </ul>
