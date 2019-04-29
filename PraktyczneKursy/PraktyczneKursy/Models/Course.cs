@@ -10,7 +10,7 @@ namespace PraktyczneKursy.Models
     {
 
         public int CourseId { get; set; }
-        public int CategotyId { get; set; }
+        public int CategoryId { get; set; }
         [Required(ErrorMessage ="Specify Course Name")]
         [StringLength(100)]
         public string CourseTitle { get; set; }

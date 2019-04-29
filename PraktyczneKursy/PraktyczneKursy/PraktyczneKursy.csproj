@@ -297,6 +297,10 @@
     <Compile Include="Migrations\201904172100456_deletingTestField.Designer.cs">
       <DependentUpon>201904172100456_deletingTestField.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201904291805017_ModelRepair.cs" />
+    <Compile Include="Migrations\201904291805017_ModelRepair.Designer.cs">
+      <DependentUpon>201904291805017_ModelRepair.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\Course.cs" />
@@ -332,6 +336,8 @@
     <Content Include="Views\Home\ContactUs.cshtml" />
     <Content Include="Views\Courses\List.cshtml" />
     <Content Include="Views\Cart\AddToCart.cshtml" />
+    <Content Include="Views\Courses\_CategoryMenu.cshtml" />
+    <Content Include="Views\Courses\_CoursesList.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -360,6 +366,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201904172100456_deletingTestField.resx">
       <DependentUpon>201904172100456_deletingTestField.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904291805017_ModelRepair.resx">
+      <DependentUpon>201904291805017_ModelRepair.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

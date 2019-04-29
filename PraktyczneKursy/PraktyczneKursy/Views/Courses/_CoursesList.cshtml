@@ -1,0 +1,26 @@
+﻿@model IEnumerable<PraktyczneKursy.Models.Course>
+@using PraktyczneKursy.Infrastructure
+
+<ul class="KursyTrzyKolumny KursCena">
+    @foreach (var course in Model)
+    {
+        <li>
+            <article>
+                <a class="dodajDoKoszykaLink" href="@Url.Action("AddToCart","Cart",new { id=course.CourseId.ToString()})">
+                    <img src="@Url.Content("~/Content/Images/koszyk.png")" />
+                </a>
+
+                @if (course.Bestseller)
+                {
+                    <div class="bestsellerFlag"></div>
+                }
+                <a class="kursSzczegolyLink" href="@Url.Action("Details","Courses",new { id=course.CourseId.ToString()})">
+                    <img class="kurs" src="@Url.ImagePath(course.FileOrPicturePhotoName)" />
+                    <h1>
+                        @course.CourseAuthor - @course.CourseTitle
+                    </h1>
+                </a>
+            </article>
+        </li>
+    }
+</ul>
