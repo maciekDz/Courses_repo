@@ -294,7 +294,10 @@
     </Compile>
     <Compile Include="Infrastructure\AppConfig.cs" />
     <Compile Include="Infrastructure\CategoryDynamicNodeProvider.cs" />
+    <Compile Include="Infrastructure\Const.cs" />
     <Compile Include="Infrastructure\CourseDetailsDynamicNodeProvider.cs" />
+    <Compile Include="Infrastructure\DefaultCacheProvider.cs" />
+    <Compile Include="Infrastructure\ICacheProvider.cs" />
     <Compile Include="Infrastructure\UrlHelpers.cs" />
     <Compile Include="Migrations\201904171902036_InitialCreate.cs" />
     <Compile Include="Migrations\201904171902036_InitialCreate.Designer.cs">

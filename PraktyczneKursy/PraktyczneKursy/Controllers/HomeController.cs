@@ -1,4 +1,6 @@
-﻿using PraktyczneKursy.DAL;
+﻿using MvcSiteMapProvider.Caching;
+using PraktyczneKursy.DAL;
+using PraktyczneKursy.Infrastructure;
 using PraktyczneKursy.Models;
 using PraktyczneKursy.ViewModels;
 using System;
@@ -16,9 +18,40 @@ namespace PraktyczneKursy.Controllers
         public ActionResult Index()
         {
 
-            var categories = db.Categories.ToList();
-            var brandNews = db.Courses.Where(x => !x.Hidden).OrderByDescending(x => x.InsertDate).Take(3).ToList();
-            var bestsellers = db.Courses.Where(x => x.Bestseller ==true &&  !x.Hidden).OrderBy(x=>Guid.NewGuid()).Take(3).ToList();
+            ICacheProvider cache = new DefaultCacheProvider();
+
+            List<Category> categories;
+            if (cache.IsSet(Const.CATEGORIES_CACHE_KEY))
+            {
+                categories = cache.Get(Const.CATEGORIES_CACHE_KEY) as List<Category>;
+            }
+            else
+            {
+                categories = db.Categories.ToList();
+                cache.Set(Const.CATEGORIES_CACHE_KEY, categories, 60);
+            }
+
+            List<Course> brandNews;
+            if (cache.IsSet(Const.BRAND_NEWS_CACHE_KEY))
+            {
+                brandNews = cache.Get(Const.BRAND_NEWS_CACHE_KEY) as List<Course>;
+            }
+            else
+            {
+                brandNews = db.Courses.Where(x => !x.Hidden).OrderByDescending(x => x.InsertDate).Take(3).ToList();
+                cache.Set(Const.BRAND_NEWS_CACHE_KEY, brandNews, 1);
+            }
+            
+            List<Course> bestsellers;
+            if (cache.IsSet(Const.BESTSELLERS_CACHE_KEY))
+            {
+                bestsellers = cache.Get(Const.BESTSELLERS_CACHE_KEY) as List<Course>;
+            }
+            else
+            {
+                bestsellers = db.Courses.Where(x => x.Bestseller == true && !x.Hidden).OrderBy(x => Guid.NewGuid()).Take(3).ToList();
+                cache.Set(Const.BESTSELLERS_CACHE_KEY, bestsellers, 1);
+            }
 
             var vm = new HomeViewModel()
             {

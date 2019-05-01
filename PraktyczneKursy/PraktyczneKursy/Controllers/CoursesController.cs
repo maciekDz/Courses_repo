@@ -31,8 +31,10 @@ namespace PraktyczneKursy.Controllers
         }
 
         [ChildActionOnly] 
+        [OutputCache(Duration =60000)]
         public ActionResult CategoryMenu()
         {
+            
             var categories = db.Categories.ToList();
             return PartialView("_CategoryMenu", categories);
         }
