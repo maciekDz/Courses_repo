@@ -35,5 +35,7 @@ namespace PraktyczneKursy.Controllers
         {
             return View(name);
         }
+
+       
     }
 }
