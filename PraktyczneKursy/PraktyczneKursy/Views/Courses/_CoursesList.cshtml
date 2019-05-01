@@ -1,6 +1,8 @@
 ﻿@model IEnumerable<PraktyczneKursy.Models.Course>
 @using PraktyczneKursy.Infrastructure
 
+<link href="@Url.Content("~/Content/Prototype.css")" rel="stylesheet" type="text/css" />
+
 <ul class="KursyTrzyKolumny KursCena">
     @foreach (var course in Model)
     {
@@ -15,15 +17,6 @@
                     <div class="bestsellerFlag"></div>
                 }
 
-                @*<a class="kursSzczegolyLink" href="@Url.Action("Details","Courses",new { id=course.CourseId.ToString()})">
-                    <img class="kurs" src="@Url.ImagePath(course.FileOrPicturePhotoName)" />
-                    <h1>
-                        @course.CourseAuthor - @course.CourseTitle
-                    </h1>
-
-                </a>*@
-
-                @* class="kurs" winowajca. trzeba wysledzic*@
                 <a class="kursSzczegolyLink" href="@Url.Action("Details","Courses",new { id=course.CourseId.ToString()})">
                     <img class="kurs" src="@Url.ImagePath(course.FileOrPicturePhotoName)" />
                     <h1>

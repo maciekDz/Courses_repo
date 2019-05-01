@@ -1,0 +1,48 @@
+﻿@model PraktyczneKursy.Models.Course
+@using PraktyczneKursy.Infrastructure
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div id="ListaKategoriZawartosc">
+    @Html.Action("CategoryMenu")
+    <div id="KategorieListPrawaSekcja">
+        <div id="Breadcrumb">
+            <img src="../Content/Images/dommaly.png" />
+            <a href="link">
+                Start > ASP.NET
+            </a>
+        </div>
+        <section id="SekcjaKurs">
+            <div id="KursLewa">
+                <img src="@Url.ImagePath(Model.FileOrPicturePhotoName)" />
+            </div>
+            <div id="KursPrawa">
+                <div id="KursNazwa">
+                    <h1>
+                        @Model.CourseTitle
+                    </h1>
+                    <h2>
+                        @Model.CourseAuthor
+                    </h2>
+                </div>
+                <div id="KursCena">
+                    <div>
+                        @string.Format("{0:0.##}",Model.CoursePrice)<span>PLN</span>
+                    </div>
+                    <a href="@Url.Action("AddToCart","Cart",new {id=Model.CourseId.ToString() })"></a>
+                </div>
+                <div id="KursOpis">
+                    @Model.CourseDescription
+                </div>
+                <div id="KursInfo">
+                    @Model.ShortDescription
+                </div>
+            </div>
+        </section>
+    </div>
+</div>

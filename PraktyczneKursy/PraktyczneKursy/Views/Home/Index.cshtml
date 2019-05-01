@@ -34,7 +34,7 @@
                     <a class="dodajDoKoszykaLink" href="@Url.Action("AddToCart","Cart",new {id=brandNew.CourseId })">
                         <img src="../Content/Images/koszyk.png" />
                     </a>
-                    <a class="kursSzczegolyLink" href="@Url.Action("Details","CoursesController", new { id=brandNew.CourseId})">
+                    <a class="kursSzczegolyLink" href="@Url.Action("Details","Courses", new { id=brandNew.CourseId})">
                         <div class="newFlag"></div>
                         <img class="kurs" src="@Url.ImagePath(brandNew.FileOrPicturePhotoName)" />
                         <h1>
@@ -58,7 +58,7 @@
                     <a class="dodajDoKoszykaLink" href="@Url.Action("AddToCart","Cart",new {id=bestSeller.CourseId })">
                         <img src="../Content/Images/koszyk.png" />
                     </a>
-                    <a class="kursSzczegolyLink" href="@Url.Action("Details","CoursesController", new { id=bestSeller.CourseId})">
+                    <a class="kursSzczegolyLink" href="@Url.Action("Details","Courses", new { id=bestSeller.CourseId})">
                         <div class="bestsellerFlag"></div>
                         <img class="kurs" src="@Url.ImagePath(bestSeller.FileOrPicturePhotoName)" />
                         <h1>
