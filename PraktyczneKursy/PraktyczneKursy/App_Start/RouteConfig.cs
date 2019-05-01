@@ -15,6 +15,11 @@ namespace PraktyczneKursy
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
+                name: "CoursesList",
+                url: "Category/{categoryName}",
+                defaults: new { controller = "Courses", action = "List" });
+
+            routes.MapRoute(
                 name: "StaticPages",
                 url: "page/{name}.cshtml",
                 defaults: new { controller = "Home", action = "StaticPages" });
