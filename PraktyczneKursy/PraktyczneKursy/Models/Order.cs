@@ -32,7 +32,7 @@ namespace PraktyczneKursy.Models
 
         public OrderState OrderState { get; set; }
         public decimal OrderValue { get; set; }
-        List<OrderElement> OrderElements { get; set; }
+        public List<OrderItem> OrderItems { get; set; }
     }
 
     public enum OrderState

@@ -1,6 +1,6 @@
 ﻿namespace PraktyczneKursy.Models
 {
-    public class OrderElement
+    public class OrderItem
     {
         public int OrderElementId { get; set; }
         public int OrderId { get; set; }
