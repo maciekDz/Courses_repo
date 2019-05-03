@@ -266,6 +266,39 @@ ul.KursCena li {
         top: 41%;
     }
 
+/*podmieniona sekcja #KursCena z pliku site.css*/
+/*#KursCena {
+    overflow: hidden;
+}
+
+    #KursCena > div {
+        float: left;
+        width: 332px;
+        height: 67px;
+        text-align: center;
+        background-color: #0a5d7c;
+        color: white;
+        font-size: 56px;
+        line-height: 56px;
+        font-weight: normal;
+    }
+
+        #KursCena > div > span {
+            font-size: 19px;
+            font-family: 'Segoe UI Light';
+            margin-left: 5px;
+        }
+
+    #KursCena > a {
+        float: left;
+        width: 73px;
+        height: 67px;
+        background-color: #0a5d7c;
+        background-image: url(../Content/Images/koszyk-details.png);
+        background-repeat: no-repeat;
+        background-position: center center;
+    }*/
+
 
 ul.KursyTrzyKolumny {
     overflow: hidden;

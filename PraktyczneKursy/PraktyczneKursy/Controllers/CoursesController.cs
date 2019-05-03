@@ -1,4 +1,5 @@
 ﻿using PraktyczneKursy.DAL;
+using PraktyczneKursy.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,11 +22,10 @@ namespace PraktyczneKursy.Controllers
         {
             var category = db.Categories.Include("Courses").Where(c => c.CategoryName.ToUpper() == categoryName.ToUpper()).Single();
 
-            //var courses = category.Courses.ToList();
             var courses = category.Courses.Where(a => (searchQuery == null ||
-                a.CourseTitle.ToLower().Contains(searchQuery.ToLower()) ||
-                a.CourseAuthor.ToLower().Contains(searchQuery.ToLower())) &&
-                !a.Hidden);
+                        a.CourseTitle.ToLower().Contains(searchQuery.ToLower()) ||
+                        a.CourseAuthor.ToLower().Contains(searchQuery.ToLower())) &&
+                        !a.Hidden);
 
             if (Request.IsAjaxRequest())
             {

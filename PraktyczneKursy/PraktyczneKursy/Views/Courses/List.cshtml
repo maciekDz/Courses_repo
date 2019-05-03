@@ -14,7 +14,7 @@
                 @Html.MvcSiteMap().SiteMapPath()
             </a>
 
-            <form id="search-form" method="get" data-ajax="true" data-ajax-target="#SekcjaListaKategori">
+            <form id="search-form" @*action="@Url.Action("List")"*@ method="get" data-ajax="true" data-ajax-target="#SekcjaListaKategori">
                 <input id="search-filter" type="search" name="searchQuery"
                        data-autocomplete-source="@Url.Action("CoursesHints")"
                        placeholder="Enter text to filter..." />
@@ -23,7 +23,6 @@
         </div>
 
         <div id="SekcjaListaKategori">
-            <p></p>
             @Html.Partial("_CoursesList")
         </div>
 
@@ -34,7 +33,7 @@
 {
     @System.Web.Optimization.Scripts.Render("~/bundles/jqueryAndJqueryUI")
 
-    <script>
+    <script type="text/javascript">
         $(function () {
             var setupAutoComplete = function () {
                 var $input = $(this);
@@ -57,6 +56,7 @@
                 var settings = {
                     data: $(this).serialize(),
                     url: $(this).attr("action"),
+                    //dataType:'html',
                     type: $(this).attr("method")
                 };
 
@@ -66,7 +66,9 @@
                     $($targetElement).replaceWith($newContent);
                     $newContent.effect("slide");
                 });
-                return false;
+                //return false;
+                //should be false but there is a problem with layout after filtering data.
+                return true;
             }
 
             $("#search-filter").each(setupAutoComplete);
