@@ -2,15 +2,15 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title>@ViewBag.Title</title>
-    <link href="@Url.Content("~/Content/site.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" type="text/css" />
     @System.Web.Optimization.Styles.Render("~/Content/themes/base/css")
     
 </head>
 <body>
     <header>
         <div style="overflow: hidden;">
-            <a id="koszykHeaderLink" href="link">
-                Koszyk (0)
+            <a id="koszykHeaderLink" href="@Url.Action("Index", "Cart")">
+                Koszyk (<span id="cart-header-quantity">@Html.Action("GetCartQuantity","Cart")</span>)
                 <span></span>
             </a>
             <a id="indexHeaderLogo" href="@Url.Content("~/")">

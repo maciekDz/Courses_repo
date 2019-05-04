@@ -1,4 +1,6 @@
-﻿@{
+﻿@using PraktyczneKursy.Infrastructure
+
+@{
     ViewBag.Title = "List";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
@@ -51,12 +53,12 @@
             };
 
             var ajaxSubmit = function () {
+
                 var $form = $(this);
 
                 var settings = {
                     data: $(this).serialize(),
                     url: $(this).attr("action"),
-                    //dataType:'html',
                     type: $(this).attr("method")
                 };
 
@@ -66,13 +68,15 @@
                     $($targetElement).replaceWith($newContent);
                     $newContent.effect("slide");
                 });
-                //return false;
-                //should be false but there is a problem with layout after filtering data.
-                return true;
-            }
+
+                    //return false;
+                    //should be false but there is a problem with layout after filtering data.
+                    return true;
+            };
 
             $("#search-filter").each(setupAutoComplete);
             $("#search-form").submit(ajaxSubmit);
+            
         });
     </script>
 }

@@ -1,0 +1,102 @@
+﻿@model PraktyczneKursy.ViewModels.CartViewModel
+@using PraktyczneKursy.Infrastructure
+@using PraktyczneKursy.Controllers
+
+@{
+    ViewBag.Title = "Cart";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<div id="ListaKategoriZawartosc">
+    @Html.Action("CategoryMenu", "Courses")
+    <div id="KategorieListPrawaSekcja">
+        <div id="Breadcrumb">
+            <img src="../Content/Images/dommaly.png" />
+            <a href="link">
+                @Html.MvcSiteMap().SiteMapPath()
+            </a>
+        </div>
+
+        <section class="SekcjaKoszyk">
+            <div class="SekcjaHeader" style="margin-bottom: 0px;">
+                <h1>Twój koszyk</h1>
+            </div>
+
+            <table id="koszykTabela">
+                @foreach (var cartItem in Model.CartItems)
+                {
+                    <tr id="cart-row-@cartItem.Course.CourseId">
+                        <td>
+                            <a href="@Url.Action("Details","Course",new { id=cartItem.Course.CourseId})">
+                                <img src="@Url.ImagePath(cartItem.Course.FileOrPicturePhotoName)" ) />
+                            </a>
+                        </td>
+                        <td>
+                            <a href="@Url.Action("Details","Course",new { id=cartItem.Course.CourseId})">
+                                @cartItem.Course.CourseTitle
+                            </a>
+                        </td>
+                        <td>Ilość: <span id="cart-quantity-item-@cartItem.Course.CourseId">@cartItem.Quantity</span></td>
+                        <td> @String.Format("{0:0.##}", cartItem.Value) zł</td>
+                        <td><a class="removeCourse" data-id="@cartItem.Course.CourseId" href="#">Usuń</a></td>
+                    </tr>
+                }
+
+                <tr id="koszyk-empty-message" @if (Model.CartItems != null && Model.CartItems.Count > 0) { <text> class="hidden" </text> }>
+                    <td>Your Cart is empty. Wanna add something?</td>
+                </tr>
+            </table>
+
+            <div id="CenaCalkowita" style="">
+                Total: <span id="total-value"> @String.Format("{0:0.##}", Model.CartValue) zł</span>
+            </div>
+
+            <div class="SekcjaPrzyciski">
+                <a class="PrzyciskLink" href="link">Kontynułuj zakupy</a>
+                @if (Model.CartValue > 0)
+                {
+                    <a class="PrzyciskLink" id="cart-button-pay" href="@Url.Action("Pay","Cart")">Zapłać</a>
+                }
+            </div>
+        </section>
+    </div>
+</div>
+
+@section Scripts
+{
+    @System.Web.Optimization.Scripts.Render("~/bundles/jqueryAndJqueryUI")
+
+    <script type="text/javascript">
+        $(function () {
+            $(".removeCourse").click(function () {
+
+                var recordToRemove = $(this).attr("data-id");
+                if (recordToRemove != '') {
+                    $.post("/Cart/RemoveFromCart", { "courseId": recordToRemove},
+                        function (response) {
+                            if (response.RemoveItemQuantity == 0) {
+                                $('#cart-row-' + response.RemoveItemId).fadeOut('slow', function () {
+                                    if (response.CartItemsCount == 0) {
+                                        $("#koszyk-empty-message").removeClass("hidden");
+                                    }
+                                });
+
+                            } else {
+                                $('#cart-quantity-item-' + response.RemoveItemId).text(response.RemoveItemQuantity);
+                            }
+
+                            if (response.CartItemsCount == 0) {
+                                $('#cart-button-pay').addClass('hidden');
+                                $('#CenaCalkowita').addClass('invisible');
+                            }
+                            $('#total-value').text(response.CartTotalValue);
+                            $('#cart-header-quantity').text(response.CartItemsCount);
+                        });
+                        return false;
+                }
+            });
+        });
+    </script>
+}
