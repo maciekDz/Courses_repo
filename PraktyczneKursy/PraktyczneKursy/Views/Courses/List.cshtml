@@ -16,7 +16,7 @@
                 @Html.MvcSiteMap().SiteMapPath()
             </a>
 
-            <form id="search-form" @*action="@Url.Action("List")"*@ method="get" data-ajax="true" data-ajax-target="#SekcjaListaKategori">
+            <form id="search-form" method="get" data-ajax="true" data-ajax-target="#SekcjaListaKategori">
                 <input id="search-filter" type="search" name="searchQuery"
                        data-autocomplete-source="@Url.Action("CoursesHints")"
                        placeholder="Enter text to filter..." />
@@ -24,9 +24,7 @@
             </form>
         </div>
 
-        <div id="SekcjaListaKategori">
-            @Html.Partial("_CoursesList")
-        </div>
+        @Html.Partial("_CoursesList")
 
     </div>
 </div>
@@ -69,9 +67,7 @@
                     $newContent.effect("slide");
                 });
 
-                    //return false;
-                    //should be false but there is a problem with layout after filtering data.
-                    return true;
+                return false;
             };
 
             $("#search-filter").each(setupAutoComplete);
