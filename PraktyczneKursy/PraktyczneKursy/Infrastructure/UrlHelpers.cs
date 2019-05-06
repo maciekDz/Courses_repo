@@ -16,9 +16,7 @@ namespace PraktyczneKursy.Infrastructure
             var path = Path.Combine(CategoryIconFolder, categoryIconName);
             var definitePath = helper.Content(path);
 
-
-            return definitePath;
-            
+            return definitePath; 
         }
 
         public static string ImagePath(this UrlHelper helper, string imageName)
@@ -26,7 +24,6 @@ namespace PraktyczneKursy.Infrastructure
             var ImageFolder = AppConfig.ImageFolder;
             var path = Path.Combine(ImageFolder, imageName);
             var definitePath = helper.Content(path);
-
 
             return definitePath;
 

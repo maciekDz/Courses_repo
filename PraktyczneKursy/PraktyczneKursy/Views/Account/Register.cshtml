@@ -14,7 +14,7 @@
     {
         @Html.AntiForgeryToken()
 
-        <div class="hidden" id="login-error">
+        <div id="login-error">
             @Html.ValidationMessage("loginerror", "")
             @Html.ValidationSummary()
         </div>
