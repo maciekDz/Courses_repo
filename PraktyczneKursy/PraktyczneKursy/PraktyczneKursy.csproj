@@ -392,6 +392,14 @@
     <Compile Include="Migrations\201905061811062_AddingAspIdentity.Designer.cs">
       <DependentUpon>201905061811062_AddingAspIdentity.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201905081841267_ExpandUserData.cs" />
+    <Compile Include="Migrations\201905081841267_ExpandUserData.Designer.cs">
+      <DependentUpon>201905081841267_ExpandUserData.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201905081923298_AddUserIdToOrderModel.cs" />
+    <Compile Include="Migrations\201905081923298_AddUserIdToOrderModel.Designer.cs">
+      <DependentUpon>201905081923298_AddUserIdToOrderModel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\CartItem.cs" />
     <Compile Include="Models\Category.cs" />
@@ -450,6 +458,8 @@
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Cart\Pay.cshtml" />
+    <Content Include="Views\Cart\OrderConfirmation.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -487,6 +497,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201905061811062_AddingAspIdentity.resx">
       <DependentUpon>201905061811062_AddingAspIdentity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905081841267_ExpandUserData.resx">
+      <DependentUpon>201905081841267_ExpandUserData.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905081923298_AddUserIdToOrderModel.resx">
+      <DependentUpon>201905081923298_AddUserIdToOrderModel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

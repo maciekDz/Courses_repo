@@ -97,7 +97,7 @@ namespace PraktyczneKursy.Infrastructure
         {
             var cart = GetCart();
             newOrder.OrderDate = DateTime.Now;
-            //newOrder.UserId = userId;
+            newOrder.UserId = userId;
             db.Orders.Add(newOrder);
             if (newOrder.OrderItems==null)
                 newOrder.OrderItems = new List<OrderItem>();
