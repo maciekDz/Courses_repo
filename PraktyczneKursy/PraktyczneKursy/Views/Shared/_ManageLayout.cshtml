@@ -1,0 +1,72 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>@ViewBag.Title</title>
+    <link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" type="text/css" />
+    @System.Web.Optimization.Styles.Render("~/Content/themes/base/css")
+
+</head>
+<body>
+    <header>
+        <div style="overflow: hidden; margin-bottom: 30px;">
+            <a class="manageLink" href="@Url.Action("Index", "Home")">
+                Start
+            </a>
+            <a class="manageLink" href="@Url.Action("Index", "Manage")">
+                Your Data
+            </a>
+            @*<a class="manageLink" href="@Url.Action("ListaZamowien", "Manage")" style="width: 100px">
+                Orders
+            </a>*@
+            @*@if (@User.IsInRole("Admin"))
+            {
+                <a class="manageLink" href="@Url.Action("DodajKurs", "Manage")">
+                    Add
+                </a>
+                <a class="manageLink" href="@Url.Content("~/elmah")">
+                    Logs
+                </a>
+                <a class="manageLink" href="@Url.Content("~/hangfire")">
+                    Jobs
+                </a>
+
+            }*@
+            <a id="koszykHeaderLink" href="@Url.Action("Index", "Cart")">
+                Cart (<span id="cart-header-quantity">@Html.Action("GetCartQuantity", "Cart")</span>)
+                <span id="cart-header-logo"></span>
+            </a>
+
+            @Html.Partial("_LoginPartial")
+        </div>
+
+        <div id="Breadcrumb">
+            <img src="@Url.Content("~/Content/Images/dommaly.png")" />
+            @Html.MvcSiteMap().SiteMapPath()
+        </div>
+    </header>
+
+    <div>
+        @RenderBody()
+    </div>
+
+    <footer>
+        <nav>
+            <ul>
+                <li><a href="@Url.Action("StaticPages","Home",new { name="AboutUs"})" style="">About Us</a></li>
+                <li><a href="@Url.Action("StaticPages","Home",new { name="Comunity"})" style="">Comunity</a></li>
+                <li><a href="@Url.Action("StaticPages","Home",new { name="Reviews"})" style="">Reviews</a></li>
+                <li><a href="@Url.Action("StaticPages","Home",new { name="Help"})" style="">Help</a></li>
+                <li><a href="@Url.Action("StaticPages","Home",new { name="Regulations"})" style="">Regulations</a></li>
+                <li><a href="@Url.Action("StaticPages","Home",new { name="ContactUs"})" style="">Contact Us</a></li>
+            </ul>
+        </nav>
+        <div id="footerLogo">
+        </div>
+        <div id="footerCopyright">
+            Copyright &copy; 2019 P. Kursy
+        </div>
+    </footer>
+
+    @RenderSection("Scripts", required: false)
+</body>
+</html>
