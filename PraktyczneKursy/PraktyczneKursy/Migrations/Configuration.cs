@@ -17,7 +17,7 @@ namespace PraktyczneKursy.Migrations
         protected override void Seed(PraktyczneKursy.DAL.CoursesContext context)
         {
             //CoursesInitializer.SeedCoursesData(context);
-
+            CoursesInitializer.SeedUsers(context);
 
 
             //  This method will be called after migrating to the latest version.

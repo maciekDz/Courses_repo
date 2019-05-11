@@ -1,0 +1,113 @@
+﻿@model IEnumerable<PraktyczneKursy.Models.Order>
+@{
+    ViewBag.Title = "OrderList";
+    Layout = "~/Views/Shared/_ManageLayout.cshtml";
+}
+
+<div>
+    <hr />
+    <h2 class="manageHeader">Your orders</h2>
+    <div>
+        @if (Model.Any())
+        {
+            <table id="zamowienia-table">
+                @foreach (var order in Model)
+                {
+                    <tr @if (order.OrderState == PraktyczneKursy.Models.OrderState.New) { <text> class="noweZamowienie" </text> }>
+                        <td>
+                            <strong>Order number: </strong>@order.OrderId
+                        </td>
+                        <td>
+                            <strong>Order date: </strong>
+                            @order.OrderDate.ToString("dd-MM-yyyy")
+                        </td>
+                        <td>
+                            <strong>State: </strong><br />
+                            @if (ViewBag.UserIsAdmin)
+                            {
+                                using (Html.BeginForm("ChangeOrderState", "Manage"))
+                                {
+                                    @Html.HiddenFor(o => order.OrderId)
+                                    @Html.EnumDropDownListFor(o => order.OrderState, new { @class = "newOrderState" })
+                                }
+                            }
+                            else
+                            {
+                                @Html.DisplayFor(o => order.OrderState)
+                            }
+                        </td>
+                        <td>
+                            <strong>Shipping data:</strong><br />
+                            @order.FirstName @order.LastName<br />
+                            @order.Address<br />
+                            @order.PostalCode@order.City<br />
+                        </td>
+                        <td>
+                            <strong>Remarks: </strong><br />
+                            @order.Comment
+                        </td>
+                        <td>
+                            <strong>Total cost:</strong> @order.OrderValue zł
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="6">
+                            <section>
+                                <ul class="TrzyKolumnyList duzaListaKursy-bottom">
+                                    @foreach (var orderItem in order.OrderItems)
+                                    {
+                                        <li>
+                                            <article>
+                                                <a class="kursSzczegolyLink" href="@Url.Action("Details", "Courses", new { id = orderItem.CourseId })">
+                                                    <img class="kurs" src="@Url.Content("~/Content/Kursy/" + orderItem.Course.FileOrPicturePhotoName)" />
+                                                    <h1>
+                                                        @orderItem.Course.CourseAuthor - @orderItem.Course.CourseTitle<br />
+                                                        <strong>quantity: @orderItem.Quatity, total: @(orderItem.Quatity * orderItem.PurchaseValue)  zł</strong>
+                                                    </h1>
+                                                </a>
+                                            </article>
+                                        </li>
+                                    }
+                                </ul>
+                            </section>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="6"></td>
+                    </tr>
+                }
+            </table>
+        }
+        else
+        {
+            <div style="text-align: center; margin-top: 50px; margin-bottom: 50px;">
+                No orders found.
+            </div>
+        }
+    </div>
+</div>
+
+@section Scripts
+{
+    <script src="~/Scripts/jquery-3.4.1.js"></script>
+    <script>
+        $(".newOrderState").on('change', function (e) {
+            //e.preventDefault();
+
+            var f = $(this.form);
+            var tr= f.closest("tr");
+            var action = f.attr("action");
+            var serializedForm = f.serialize();
+
+            $.post(action, serializedForm).done(function (data) {
+                if (data=='@PraktyczneKursy.Models.OrderState.New.ToString()') {
+                    tr.addClass("noweZamowienie")
+                }
+                else {
+                    tr.removeClass("noweZamowienie");
+                }
+            });
+        });
+    </script>
+
+}

@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
+using PraktyczneKursy.DAL;
 using PraktyczneKursy.Models;
 using PraktyczneKursy.ViewModels;
 using System;
@@ -17,6 +18,8 @@ namespace PraktyczneKursy.Controllers
     [Authorize]
     public class ManageController : Controller
     {
+        private CoursesContext db = new CoursesContext();
+
         public enum ManageMessageId
         {
             ChangePasswordSuccess,
@@ -45,8 +48,6 @@ namespace PraktyczneKursy.Controllers
             }
         }
 
-
-        // GET: Manage
         public async Task<ActionResult> Index(ManageMessageId? message)
         {
             if (TempData["ViewData"] != null)
@@ -136,6 +137,38 @@ namespace PraktyczneKursy.Controllers
         {
             AuthenticationManager.SignOut(DefaultAuthenticationTypes.ExternalCookie, DefaultAuthenticationTypes.TwoFactorCookie);
             AuthenticationManager.SignIn(new AuthenticationProperties { IsPersistent = isPersistent }, await user.GenerateUserIdentityAsync(UserManager));
+        }
+
+        public ActionResult OrderList()
+        {
+            bool isAdmin = User.IsInRole("Admin");
+            ViewBag.UserIsAdmin = isAdmin;
+
+            IEnumerable<Order> userOrder;
+
+            if (isAdmin)
+            {
+                userOrder = db.Orders.Include("OrderItems").OrderByDescending(o => o.OrderDate).ToArray();
+            }
+            else
+            {
+                var userId = User.Identity.GetUserId();
+                userOrder = db.Orders.Include("OrderItems").Where(o=>o.UserId== userId).OrderByDescending(o => o.OrderDate).ToArray();
+            }
+
+            return View(userOrder);
+        }
+
+        [HttpPost]
+        [Authorize(Roles ="Admin")]
+        public OrderState ChangeOrderState(Order order)
+        {
+            Order orderToBeModified = db.Orders.Find(order.OrderId);
+            orderToBeModified.OrderState = order.OrderState;
+            db.SaveChanges();
+
+            return order.OrderState;
+
         }
     }
 }
