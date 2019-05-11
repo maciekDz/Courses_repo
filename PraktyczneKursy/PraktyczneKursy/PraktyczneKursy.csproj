@@ -233,6 +233,7 @@
     <Content Include="Content\Kategorie\javascript.png" />
     <Content Include="Content\Kategorie\jquery.png" />
     <Content Include="Content\Kategorie\xml.png" />
+    <Content Include="Content\Kursy\553e8392-e325-41a9-a382-8cb2474ad6d4.png" />
     <Content Include="Content\Kursy\obrazekaspnet.png" />
     <Content Include="Content\Kursy\obrazekcsharp.png" />
     <Content Include="Content\Kursy\obrazekcss.png" />
@@ -414,6 +415,7 @@
     <Compile Include="ViewModels\AccountViewModel.cs" />
     <Compile Include="ViewModels\CartRemoveViewModel.cs" />
     <Compile Include="ViewModels\CartViewModel.cs" />
+    <Compile Include="ViewModels\EditCourseViewModel.cs" />
     <Compile Include="ViewModels\HomeViewModel.cs" />
     <Compile Include="ViewModels\ManageCredentialsViewModel.cs" />
   </ItemGroup>
@@ -466,6 +468,7 @@
     <Content Include="Views\Shared\_ManageLayout.cshtml" />
     <Content Include="Views\Manage\OrderList.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\Enum.cshtml" />
+    <Content Include="Views\Manage\AddCourse.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -18,19 +18,19 @@
             <a class="manageLink" href="@Url.Action("OrderList", "Manage")" style="width: 100px">
                 Orders
             </a>
-            @*@if (@User.IsInRole("Admin"))
+            @if (@User.IsInRole("Admin"))
             {
-                <a class="manageLink" href="@Url.Action("DodajKurs", "Manage")">
-                    Add
+                <a class="manageLink" href="@Url.Action("AddCourse", "Manage")">
+                    Add or edit Course
                 </a>
-                <a class="manageLink" href="@Url.Content("~/elmah")">
+                @*<a class="manageLink" href="@Url.Content("~/elmah")">
                     Logs
                 </a>
                 <a class="manageLink" href="@Url.Content("~/hangfire")">
                     Jobs
-                </a>
+                </a>*@
 
-            }*@
+            }
             <a id="koszykHeaderLink" href="@Url.Action("Index", "Cart")">
                 Cart (<span id="cart-header-quantity">@Html.Action("GetCartQuantity", "Cart")</span>)
                 <span id="cart-header-logo"></span>

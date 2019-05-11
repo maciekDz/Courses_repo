@@ -2,10 +2,13 @@
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using PraktyczneKursy.DAL;
+using PraktyczneKursy.Infrastructure;
 using PraktyczneKursy.Models;
 using PraktyczneKursy.ViewModels;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
@@ -87,7 +90,7 @@ namespace PraktyczneKursy.Controllers
 
                 AddErrors(result);
             }
-            else 
+            else
             {
                 TempData["ViewData"] = ViewData;
             }
@@ -96,7 +99,7 @@ namespace PraktyczneKursy.Controllers
 
         }
 
-        public async Task<ActionResult> ChangePassword([Bind(Prefix ="ChangePasswordViewModel")]ChangePasswordViewModel model)
+        public async Task<ActionResult> ChangePassword([Bind(Prefix = "ChangePasswordViewModel")]ChangePasswordViewModel model)
         {
             if (!ModelState.IsValid)
             {
@@ -153,14 +156,14 @@ namespace PraktyczneKursy.Controllers
             else
             {
                 var userId = User.Identity.GetUserId();
-                userOrder = db.Orders.Include("OrderItems").Where(o=>o.UserId== userId).OrderByDescending(o => o.OrderDate).ToArray();
+                userOrder = db.Orders.Include("OrderItems").Where(o => o.UserId == userId).OrderByDescending(o => o.OrderDate).ToArray();
             }
 
             return View(userOrder);
         }
 
         [HttpPost]
-        [Authorize(Roles ="Admin")]
+        [Authorize(Roles = "Admin")]
         public OrderState ChangeOrderState(Order order)
         {
             Order orderToBeModified = db.Orders.Find(order.OrderId);
@@ -168,7 +171,110 @@ namespace PraktyczneKursy.Controllers
             db.SaveChanges();
 
             return order.OrderState;
+        }
 
+        [Authorize(Roles = "Admin")]
+        public ActionResult AddCourse(int? courseId, bool? confirmation, string msg = "")
+        {
+            Course course;
+
+            if (courseId.HasValue)
+            {
+                ViewBag.EditeMode = true;
+                course = db.Courses.Find(courseId);
+            }
+            else
+            {
+                ViewBag.EditeMode = false;
+                course = new Course();
+            }
+
+            var result = new EditCourseViewModel();
+            result.Categories = db.Categories.ToList();
+            result.Course = course;
+            result.Confirmation = confirmation;
+            result.Msg = msg;
+
+            return View(result);
+
+        }
+
+        [HttpPost]
+        [Authorize(Roles = "Admin")]
+        public ActionResult AddCourse(EditCourseViewModel model, HttpPostedFileBase file)
+        {
+            if (ModelState.IsValid)
+            {
+                var fileExt = "";
+                var fileName = "";
+                if (file != null && file.ContentLength > 0)
+                {
+                    fileExt = Path.GetExtension(file.FileName);
+                    fileName = Guid.NewGuid() + fileExt;
+
+                    var path = Path.Combine(Server.MapPath(AppConfig.ImageFolder), fileName);
+                    file.SaveAs(path);
+
+                    //model.Course.FileOrPicturePhotoName = fileName;
+                }
+
+                if (model.Course.CourseId > 0)
+                {
+                    var oldFileName = Path.Combine(Server.MapPath(AppConfig.ImageFolder), model.Course.FileOrPicturePhotoName);
+                    System.IO.File.Delete(oldFileName);
+
+                    model.Course.FileOrPicturePhotoName = fileName;
+                    db.Entry(model.Course).State = EntityState.Modified;
+                    db.SaveChanges();
+                    return RedirectToAction("AddCourse", new { confirmation = true, msg = "Successfully modified!" });
+                }
+                else
+                {
+                    if (! String.IsNullOrEmpty(fileExt))
+                    {
+                        model.Course.InsertDate = DateTime.Now;
+                        model.Course.FileOrPicturePhotoName = fileName;
+
+                        db.Entry(model.Course).State = EntityState.Added;
+                        db.SaveChanges();
+
+                        return RedirectToAction("AddCourse", new { confirmation = true, msg = "Successfully added!" });
+                    }
+                    else
+                    {
+                        ModelState.AddModelError("", "No image choosen");
+                        var categories = db.Categories.ToList();
+                        model.Categories = categories;
+                        return View(model);
+                    }
+                }
+            }
+            else
+            {
+                var categories = db.Categories.ToList();
+                model.Categories = categories;
+                return View(model);
+            }
+        }
+
+        [Authorize(Roles = "Admin")]
+        public ActionResult HideCourse(int courseId)
+        {
+            var course = db.Courses.Find(courseId);
+            course.Hidden = true;
+            db.SaveChanges();
+
+            return RedirectToAction("AddCourse", new { confirmation = true,msg="Course hidden" });
+        }
+
+        [Authorize(Roles = "Admin")]
+        public ActionResult ShowCourse(int courseId)
+        {
+            var kurs = db.Courses.Find(courseId);
+            kurs.Hidden = false;
+            db.SaveChanges();
+
+            return RedirectToAction("AddCourse", new { confirmation = true, msg = "Course restored" });
         }
     }
 }
