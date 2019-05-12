@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNet.Identity;
+﻿using Hangfire;
+using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using PraktyczneKursy.DAL;
 using PraktyczneKursy.Infrastructure;
@@ -7,6 +8,7 @@ using PraktyczneKursy.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
@@ -113,15 +115,10 @@ namespace PraktyczneKursy.Controllers
 
                 cartManager.EmptyCart();
 
-                var order = db.Orders.Include("OrderItems").Include("OrderItems.Course").SingleOrDefault(o=>o.OrderId==newOrder.OrderId);
-                OrderConfirmationEmail email = new OrderConfirmationEmail();
-                email.To = order.Email;
-                email.From = "dzyndz71@gmail.com";
-                email.Value = order.OrderValue;
-                email.OrderNumber = order.OrderId;
-                email.OrderItems = order.OrderItems;
-                email.Send();
-
+                string url = Url.Action("OrderConfirmationEmail", "Cart", new { orderId = newOrder.OrderId, lastName = newOrder.LastName }, Request.Url.Scheme);
+                BackgroundJob.Enqueue(() => MailSender.Call(url));
+                //BackgroundJob.Schedule(() => System.Console.WriteLine("Test scheduled job"),TimeSpan.FromDays(1));
+                //RecurringJob.AddOrUpdate(() => System.Console.WriteLine("Test recuring job"), Cron.Daily);
                 return RedirectToAction("OrderConfirmation");
             }
             else
@@ -129,6 +126,24 @@ namespace PraktyczneKursy.Controllers
                 return View(orderDetails);
             }
         }
+
+        public ActionResult OrderConfirmationEmail(int orderId, string lastName)
+        {
+            var order = db.Orders.Include("OrderItems").Include("OrderItems.Course").SingleOrDefault(o => o.OrderId == orderId && o.LastName==lastName);
+
+            if (order == null) return new HttpStatusCodeResult(HttpStatusCode.NotFound);
+           
+            OrderConfirmationEmail email = new OrderConfirmationEmail();
+            email.To = order.Email;
+            email.From = "dzyndz71@gmail.com";
+            email.Value = order.OrderValue;
+            email.OrderNumber = order.OrderId;
+            email.OrderItems = order.OrderItems;
+            email.Send();
+
+            return new HttpStatusCodeResult(HttpStatusCode.OK);
+        }
+
         public ActionResult OrderConfirmation()
         {
             return View();

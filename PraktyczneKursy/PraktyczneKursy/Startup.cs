@@ -1,4 +1,5 @@
-﻿using Owin;
+﻿using Hangfire;
+using Owin;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,6 +12,11 @@ namespace PraktyczneKursy
         public void Configuration(IAppBuilder app)
         {
             ConfigureAuth(app);
+
+            GlobalConfiguration.Configuration.UseSqlServerStorage("CoursesContext");
+
+            app.UseHangfireDashboard();
+            app.UseHangfireServer();
         }
     }
 }
