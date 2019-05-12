@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
@@ -275,6 +276,41 @@ namespace PraktyczneKursy.Controllers
             db.SaveChanges();
 
             return RedirectToAction("AddCourse", new { confirmation = true, msg = "Course restored" });
+        }
+
+        [AllowAnonymous]
+        public ActionResult SendOrderConfirmationEmail(int orderId, string lastName)
+        {
+            var order = db.Orders.Include("OrderItems").Include("OrderItems.Course").SingleOrDefault(o => o.OrderId == orderId && o.LastName == lastName);
+
+            if (order == null) return new HttpStatusCodeResult(HttpStatusCode.NotFound);
+
+            OrderConfirmationEmail email = new OrderConfirmationEmail();
+            email.To = order.Email;
+            email.From = "dzyndz71@gmail.com";
+            email.Value = order.OrderValue;
+            email.OrderNumber = order.OrderId;
+            email.OrderItems = order.OrderItems;
+            email.ImagePath = AppConfig.ImageFolder;
+            email.Send();
+
+            return new HttpStatusCodeResult(HttpStatusCode.OK);
+        }
+
+        [AllowAnonymous]
+        public ActionResult SendFinishedOrderEmail(int orderId, string lastName)
+        {
+            var order = db.Orders.Include("OrderItems").Include("OrderItems.Course").SingleOrDefault(o => o.OrderId == orderId && o.LastName == lastName);
+
+            if (order == null) return new HttpStatusCodeResult(HttpStatusCode.NotFound);
+
+            FinishedOrderEmail email = new FinishedOrderEmail();
+            email.To = order.Email;
+            email.From = "mariuszjurczenko@gmail.com";
+            email.OrderNumber = order.OrderId;
+            email.Send();
+
+            return new HttpStatusCodeResult(HttpStatusCode.OK);
         }
     }
 }

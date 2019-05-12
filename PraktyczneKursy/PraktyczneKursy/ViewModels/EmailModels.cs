@@ -13,8 +13,14 @@ namespace PraktyczneKursy.ViewModels
         public string From { get; set; }
         public decimal Value { get; set; }
         public int OrderNumber { get; set; }
+        public string ImagePath { get; set; }
         public List<OrderItem> OrderItems { get; set; }
+    }
 
-
+    public class FinishedOrderEmail : Email
+    {
+        public string To { get; set; }
+        public string From { get; set; }
+        public int OrderNumber { get; set; }
     }
 }
