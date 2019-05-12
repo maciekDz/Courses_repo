@@ -1,0 +1,165 @@
+﻿<error errorId="619f0303-5d3a-43ce-88e9-32314f5f25a7" host="DESKTOP-BAQ00BU" type="System.Exception" message="Manual error" source="PraktyczneKursy" detail="System.Exception: Manual error&#xD;&#xA;   w PraktyczneKursy.Controllers.HomeController.Index() w C:\Users\Maciek\source\repos\PraktyczneKursy\PraktyczneKursy\PraktyczneKursy\Controllers\HomeController.cs:wiersz 20&#xD;&#xA;   w lambda_method(Closure , ControllerBase , Object[] )&#xD;&#xA;   w System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)&#xD;&#xA;   w System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)&#xD;&#xA;   w System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)&#xD;&#xA;   w System.Web.Mvc.Async.AsyncControllerActionInvoker.&lt;&gt;c.&lt;BeginInvokeSynchronousActionMethod&gt;b__9_0(IAsyncResult asyncResult, ActionInvocation innerInvokeState)&#xD;&#xA;   w System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`2.CallEndDelegate(IAsyncResult asyncResult)&#xD;&#xA;   w System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()&#xD;&#xA;   w Castle.Proxies.AsyncControllerActionInvokerProxy.EndInvokeActionMethod_callback(IAsyncResult asyncResult)&#xD;&#xA;   w Castle.Proxies.Invocations.AsyncControllerActionInvoker_EndInvokeActionMethod.InvokeMethodOnTarget()&#xD;&#xA;   w Castle.DynamicProxy.AbstractInvocation.Proceed()&#xD;&#xA;   w Glimpse.Core.Extensibility.CastleInvocationToAlternateMethodContextAdapter.Proceed()&#xD;&#xA;   w Glimpse.Mvc.AlternateType.AsyncActionInvoker.EndInvokeActionMethod.NewImplementation(IAlternateMethodContext context)&#xD;&#xA;   w Glimpse.Core.Extensibility.AlternateTypeToCastleInterceptorAdapter.Intercept(IInvocation invocation)&#xD;&#xA;   w Castle.DynamicProxy.AbstractInvocation.Proceed()&#xD;&#xA;   w Castle.Proxies.AsyncControllerActionInvokerProxy.EndInvokeActionMethod(IAsyncResult asyncResult)&#xD;&#xA;   w System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.&lt;&gt;c__DisplayClass11_0.&lt;InvokeActionMethodFilterAsynchronouslyRecursive&gt;b__0()&#xD;&#xA;   w System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.&lt;&gt;c__DisplayClass11_2.&lt;InvokeActionMethodFilterAsynchronouslyRecursive&gt;b__2()&#xD;&#xA;   w System.Web.Mvc.Async.AsyncControllerActionInvoker.&lt;&gt;c__DisplayClass7_0.&lt;BeginInvokeActionMethodWithFilters&gt;b__1(IAsyncResult asyncResult)&#xD;&#xA;   w System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.CallEndDelegate(IAsyncResult asyncResult)&#xD;&#xA;   w System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()&#xD;&#xA;   w System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)&#xD;&#xA;   w System.Web.Mvc.Async.AsyncControllerActionInvoker.&lt;&gt;c__DisplayClass3_6.&lt;BeginInvokeAction&gt;b__4()&#xD;&#xA;   w System.Web.Mvc.Async.AsyncControllerActionInvoker.&lt;&gt;c__DisplayClass3_1.&lt;BeginInvokeAction&gt;b__1(IAsyncResult asyncResult)&#xD;&#xA;   w System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.CallEndDelegate(IAsyncResult asyncResult)&#xD;&#xA;   w System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()&#xD;&#xA;   w System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeAction(IAsyncResult asyncResult)&#xD;&#xA;   w System.Web.Mvc.Controller.&lt;&gt;c.&lt;BeginExecuteCore&gt;b__152_1(IAsyncResult asyncResult, ExecuteCoreState innerState)&#xD;&#xA;   w System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncVoid`1.CallEndDelegate(IAsyncResult asyncResult)&#xD;&#xA;   w System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()&#xD;&#xA;   w System.Web.Mvc.Controller.EndExecuteCore(IAsyncResult asyncResult)&#xD;&#xA;   w System.Web.Mvc.Controller.&lt;&gt;c.&lt;BeginExecute&gt;b__151_2(IAsyncResult asyncResult, Controller controller)&#xD;&#xA;   w System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncVoid`1.CallEndDelegate(IAsyncResult asyncResult)&#xD;&#xA;   w System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()&#xD;&#xA;   w System.Web.Mvc.Controller.EndExecute(IAsyncResult asyncResult)&#xD;&#xA;   w System.Web.Mvc.Controller.System.Web.Mvc.Async.IAsyncController.EndExecute(IAsyncResult asyncResult)&#xD;&#xA;   w System.Web.Mvc.MvcHandler.&lt;&gt;c.&lt;BeginProcessRequest&gt;b__20_1(IAsyncResult asyncResult, ProcessRequestState innerState)&#xD;&#xA;   w System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncVoid`1.CallEndDelegate(IAsyncResult asyncResult)&#xD;&#xA;   w System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()&#xD;&#xA;   w System.Web.Mvc.MvcHandler.EndProcessRequest(IAsyncResult asyncResult)&#xD;&#xA;   w System.Web.Mvc.MvcHandler.System.Web.IHttpAsyncHandler.EndProcessRequest(IAsyncResult result)&#xD;&#xA;   w System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()&#xD;&#xA;   w System.Web.HttpApplication.ExecuteStepImpl(IExecutionStep step)&#xD;&#xA;   w System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean&amp; completedSynchronously)" user="admin@praktycznekursy.pl" time="2019-05-12T09:00:53.6614704Z">
+  <serverVariables>
+    <item name="ALL_HTTP">
+      <value string="HTTP_CONNECTION:Keep-Alive&#xD;&#xA;HTTP_ACCEPT:text/html, application/xhtml+xml, image/jxr, */*&#xD;&#xA;HTTP_ACCEPT_ENCODING:gzip, deflate&#xD;&#xA;HTTP_ACCEPT_LANGUAGE:pl,en-US;q=0.7,en;q=0.3&#xD;&#xA;HTTP_COOKIE:glimpsePolicy=On; glimpseOptions=%7B%22glimpsePolicy%22%3Anull%7D; .AspNet.ApplicationCookie=b4gnaQojCNX0QXBETArtOqVGl9dX2M9G9XCuiAC6-5s69ejtaSDbPqmwm6736NX6_3Ru2MuIe-uyFACeAOmmjxeR6Qq4OUzdubZ5gsdsf7pV0NHPg2AvN5WDY7XQ5SlGtLWl-Z4dwhC9oXj-_PSox99krX9qaGtMFXQgmVfDfAe2qS6ZUeyVwtHGNYy08Paq2H5YNKk37tAL53o-9mjpy0P_jzsRXfurtmW38_XJgZK7lLxPhb1imeEDqQQZT3qQs0ryfXetNX7XTTqJtZ6YKCSGnLaUsyO2OcusuBTmbaA3Ga4QZesh4a9kNAkZC0tVvRM-7FuPsDm8zOy41k7S6EvomM3BGeZVbFC84Ag7m1O9smUTt3oub7PJav9n7TtK5y-fdvgkRCCM1fUx2-1_X7vvAufTuFwgXOVESyGjZkwLF-muWFy8aBUJ9TodlxTWF6-Fvsgv2CMTG-wuPywEjNkG8pexxZBBpy9YSgPxRhf0TysmsWJ6E0Oyj_dateHhy5OanMdPXbHzyw8Vm4gT_dPaxN1VmzuW07jK-WIBPPc&#xD;&#xA;HTTP_HOST:localhost:52172&#xD;&#xA;HTTP_USER_AGENT:Mozilla/5.0 (Windows NT 10.0; WOW64; Trident/7.0; rv:11.0) like Gecko&#xD;&#xA;" />
+    </item>
+    <item name="ALL_RAW">
+      <value string="Connection: Keep-Alive&#xD;&#xA;Accept: text/html, application/xhtml+xml, image/jxr, */*&#xD;&#xA;Accept-Encoding: gzip, deflate&#xD;&#xA;Accept-Language: pl,en-US;q=0.7,en;q=0.3&#xD;&#xA;Cookie: glimpsePolicy=On; glimpseOptions=%7B%22glimpsePolicy%22%3Anull%7D; .AspNet.ApplicationCookie=b4gnaQojCNX0QXBETArtOqVGl9dX2M9G9XCuiAC6-5s69ejtaSDbPqmwm6736NX6_3Ru2MuIe-uyFACeAOmmjxeR6Qq4OUzdubZ5gsdsf7pV0NHPg2AvN5WDY7XQ5SlGtLWl-Z4dwhC9oXj-_PSox99krX9qaGtMFXQgmVfDfAe2qS6ZUeyVwtHGNYy08Paq2H5YNKk37tAL53o-9mjpy0P_jzsRXfurtmW38_XJgZK7lLxPhb1imeEDqQQZT3qQs0ryfXetNX7XTTqJtZ6YKCSGnLaUsyO2OcusuBTmbaA3Ga4QZesh4a9kNAkZC0tVvRM-7FuPsDm8zOy41k7S6EvomM3BGeZVbFC84Ag7m1O9smUTt3oub7PJav9n7TtK5y-fdvgkRCCM1fUx2-1_X7vvAufTuFwgXOVESyGjZkwLF-muWFy8aBUJ9TodlxTWF6-Fvsgv2CMTG-wuPywEjNkG8pexxZBBpy9YSgPxRhf0TysmsWJ6E0Oyj_dateHhy5OanMdPXbHzyw8Vm4gT_dPaxN1VmzuW07jK-WIBPPc&#xD;&#xA;Host: localhost:52172&#xD;&#xA;User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; Trident/7.0; rv:11.0) like Gecko&#xD;&#xA;" />
+    </item>
+    <item name="APPL_MD_PATH">
+      <value string="/LM/W3SVC/2/ROOT" />
+    </item>
+    <item name="APPL_PHYSICAL_PATH">
+      <value string="C:\Users\Maciek\source\repos\PraktyczneKursy\PraktyczneKursy\PraktyczneKursy\" />
+    </item>
+    <item name="AUTH_TYPE">
+      <value string="ApplicationCookie" />
+    </item>
+    <item name="AUTH_USER">
+      <value string="admin@praktycznekursy.pl" />
+    </item>
+    <item name="AUTH_PASSWORD">
+      <value string="" />
+    </item>
+    <item name="LOGON_USER">
+      <value string="" />
+    </item>
+    <item name="REMOTE_USER">
+      <value string="admin@praktycznekursy.pl" />
+    </item>
+    <item name="CERT_COOKIE">
+      <value string="" />
+    </item>
+    <item name="CERT_FLAGS">
+      <value string="" />
+    </item>
+    <item name="CERT_ISSUER">
+      <value string="" />
+    </item>
+    <item name="CERT_KEYSIZE">
+      <value string="" />
+    </item>
+    <item name="CERT_SECRETKEYSIZE">
+      <value string="" />
+    </item>
+    <item name="CERT_SERIALNUMBER">
+      <value string="" />
+    </item>
+    <item name="CERT_SERVER_ISSUER">
+      <value string="" />
+    </item>
+    <item name="CERT_SERVER_SUBJECT">
+      <value string="" />
+    </item>
+    <item name="CERT_SUBJECT">
+      <value string="" />
+    </item>
+    <item name="CONTENT_LENGTH">
+      <value string="0" />
+    </item>
+    <item name="CONTENT_TYPE">
+      <value string="" />
+    </item>
+    <item name="GATEWAY_INTERFACE">
+      <value string="CGI/1.1" />
+    </item>
+    <item name="HTTPS">
+      <value string="off" />
+    </item>
+    <item name="HTTPS_KEYSIZE">
+      <value string="" />
+    </item>
+    <item name="HTTPS_SECRETKEYSIZE">
+      <value string="" />
+    </item>
+    <item name="HTTPS_SERVER_ISSUER">
+      <value string="" />
+    </item>
+    <item name="HTTPS_SERVER_SUBJECT">
+      <value string="" />
+    </item>
+    <item name="INSTANCE_ID">
+      <value string="2" />
+    </item>
+    <item name="INSTANCE_META_PATH">
+      <value string="/LM/W3SVC/2" />
+    </item>
+    <item name="LOCAL_ADDR">
+      <value string="::1" />
+    </item>
+    <item name="PATH_INFO">
+      <value string="/" />
+    </item>
+    <item name="PATH_TRANSLATED">
+      <value string="C:\Users\Maciek\source\repos\PraktyczneKursy\PraktyczneKursy\PraktyczneKursy" />
+    </item>
+    <item name="QUERY_STRING">
+      <value string="" />
+    </item>
+    <item name="REMOTE_ADDR">
+      <value string="::1" />
+    </item>
+    <item name="REMOTE_HOST">
+      <value string="::1" />
+    </item>
+    <item name="REMOTE_PORT">
+      <value string="59429" />
+    </item>
+    <item name="REQUEST_METHOD">
+      <value string="GET" />
+    </item>
+    <item name="SCRIPT_NAME">
+      <value string="/" />
+    </item>
+    <item name="SERVER_NAME">
+      <value string="localhost" />
+    </item>
+    <item name="SERVER_PORT">
+      <value string="52172" />
+    </item>
+    <item name="SERVER_PORT_SECURE">
+      <value string="0" />
+    </item>
+    <item name="SERVER_PROTOCOL">
+      <value string="HTTP/1.1" />
+    </item>
+    <item name="SERVER_SOFTWARE">
+      <value string="Microsoft-IIS/10.0" />
+    </item>
+    <item name="URL">
+      <value string="/" />
+    </item>
+    <item name="HTTP_CONNECTION">
+      <value string="Keep-Alive" />
+    </item>
+    <item name="HTTP_ACCEPT">
+      <value string="text/html, application/xhtml+xml, image/jxr, */*" />
+    </item>
+    <item name="HTTP_ACCEPT_ENCODING">
+      <value string="gzip, deflate" />
+    </item>
+    <item name="HTTP_ACCEPT_LANGUAGE">
+      <value string="pl,en-US;q=0.7,en;q=0.3" />
+    </item>
+    <item name="HTTP_COOKIE">
+      <value string="glimpsePolicy=On; glimpseOptions=%7B%22glimpsePolicy%22%3Anull%7D; .AspNet.ApplicationCookie=b4gnaQojCNX0QXBETArtOqVGl9dX2M9G9XCuiAC6-5s69ejtaSDbPqmwm6736NX6_3Ru2MuIe-uyFACeAOmmjxeR6Qq4OUzdubZ5gsdsf7pV0NHPg2AvN5WDY7XQ5SlGtLWl-Z4dwhC9oXj-_PSox99krX9qaGtMFXQgmVfDfAe2qS6ZUeyVwtHGNYy08Paq2H5YNKk37tAL53o-9mjpy0P_jzsRXfurtmW38_XJgZK7lLxPhb1imeEDqQQZT3qQs0ryfXetNX7XTTqJtZ6YKCSGnLaUsyO2OcusuBTmbaA3Ga4QZesh4a9kNAkZC0tVvRM-7FuPsDm8zOy41k7S6EvomM3BGeZVbFC84Ag7m1O9smUTt3oub7PJav9n7TtK5y-fdvgkRCCM1fUx2-1_X7vvAufTuFwgXOVESyGjZkwLF-muWFy8aBUJ9TodlxTWF6-Fvsgv2CMTG-wuPywEjNkG8pexxZBBpy9YSgPxRhf0TysmsWJ6E0Oyj_dateHhy5OanMdPXbHzyw8Vm4gT_dPaxN1VmzuW07jK-WIBPPc" />
+    </item>
+    <item name="HTTP_HOST">
+      <value string="localhost:52172" />
+    </item>
+    <item name="HTTP_USER_AGENT">
+      <value string="Mozilla/5.0 (Windows NT 10.0; WOW64; Trident/7.0; rv:11.0) like Gecko" />
+    </item>
+  </serverVariables>
+  <cookies>
+    <item name="glimpsePolicy">
+      <value string="On" />
+    </item>
+    <item name="glimpseOptions">
+      <value string="%7B%22glimpsePolicy%22%3Anull%7D" />
+    </item>
+    <item name=".AspNet.ApplicationCookie">
+      <value string="b4gnaQojCNX0QXBETArtOqVGl9dX2M9G9XCuiAC6-5s69ejtaSDbPqmwm6736NX6_3Ru2MuIe-uyFACeAOmmjxeR6Qq4OUzdubZ5gsdsf7pV0NHPg2AvN5WDY7XQ5SlGtLWl-Z4dwhC9oXj-_PSox99krX9qaGtMFXQgmVfDfAe2qS6ZUeyVwtHGNYy08Paq2H5YNKk37tAL53o-9mjpy0P_jzsRXfurtmW38_XJgZK7lLxPhb1imeEDqQQZT3qQs0ryfXetNX7XTTqJtZ6YKCSGnLaUsyO2OcusuBTmbaA3Ga4QZesh4a9kNAkZC0tVvRM-7FuPsDm8zOy41k7S6EvomM3BGeZVbFC84Ag7m1O9smUTt3oub7PJav9n7TtK5y-fdvgkRCCM1fUx2-1_X7vvAufTuFwgXOVESyGjZkwLF-muWFy8aBUJ9TodlxTWF6-Fvsgv2CMTG-wuPywEjNkG8pexxZBBpy9YSgPxRhf0TysmsWJ6E0Oyj_dateHhy5OanMdPXbHzyw8Vm4gT_dPaxN1VmzuW07jK-WIBPPc" />
+    </item>
+  </cookies>
+</error>

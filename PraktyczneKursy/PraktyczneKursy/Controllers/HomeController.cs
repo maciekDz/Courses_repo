@@ -1,4 +1,6 @@
 ﻿using MvcSiteMapProvider.Caching;
+using NLog;
+using NLog.Targets;
 using PraktyczneKursy.DAL;
 using PraktyczneKursy.Infrastructure;
 using PraktyczneKursy.Models;
@@ -11,13 +13,16 @@ using System.Web.Mvc;
 
 namespace PraktyczneKursy.Controllers
 {
+    [Target("Elmah")]
     public class HomeController : Controller
     {
         private CoursesContext db = new CoursesContext();
+        private static Logger logger = LogManager.GetCurrentClassLogger();
 
         public ActionResult Index()
         {
-
+            logger.Info("U r on the main page");
+            //throw new Exception("ascasca");
             ICacheProvider cache = new DefaultCacheProvider();
 
             List<Category> categories;
