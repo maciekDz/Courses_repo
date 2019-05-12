@@ -5,3 +5,5 @@
 2019-05-12 11:48:45.4553|INFO|PraktyczneKursy.Controllers.HomeController|U r on the main page
 2019-05-12 11:50:15.2197|INFO|PraktyczneKursy.Controllers.HomeController|U r on the main page
 2019-05-12 12:44:10.4234|INFO|PraktyczneKursy.Controllers.HomeController|U r on the main page
+2019-05-12 14:12:41.7863|INFO|PraktyczneKursy.Controllers.HomeController|U r on the main page
+2019-05-12 14:13:29.3577|INFO|PraktyczneKursy.Controllers.HomeController|U r on the main page
