@@ -113,6 +113,15 @@ namespace PraktyczneKursy.Controllers
 
                 cartManager.EmptyCart();
 
+                var order = db.Orders.Include("OrderItems").Include("OrderItems.Course").SingleOrDefault(o=>o.OrderId==newOrder.OrderId);
+                OrderConfirmationEmail email = new OrderConfirmationEmail();
+                email.To = order.Email;
+                email.From = "dzyndz71@gmail.com";
+                email.Value = order.OrderValue;
+                email.OrderNumber = order.OrderId;
+                email.OrderItems = order.OrderItems;
+                email.Send();
+
                 return RedirectToAction("OrderConfirmation");
             }
             else

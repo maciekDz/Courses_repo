@@ -1,0 +1,28 @@
+﻿@model PraktyczneKursy.ViewModels.OrderConfirmationEmail
+Content-Type: text/plain; charset=utf-8
+
+Thank you!
+
+You have made an order in Praktyczne Kursy.
+
+Ordered items:
+
+@{
+    IEnumerable<PraktyczneKursy.Models.OrderItem> orderItems = Model.OrderItems;
+    for (int i = 0; i < orderItems.Count(); i++)
+    {
+        @orderItems.ElementAt(i).Course.CourseTitle
+    }
+}
+
+Please make your payment: @Model.Value zł, title: order number - @Model.OrderNumber on our bank account:
+
+Praktyczne Kursy test
+ul. Test1
+66-666 Test
+PKO 6666 6666 6666 6666 6666
+
+After receiving the payment we'll grant you full acces to your purchased courses.
+
+Thank you and see you soon!
+Praktyczne Kursy

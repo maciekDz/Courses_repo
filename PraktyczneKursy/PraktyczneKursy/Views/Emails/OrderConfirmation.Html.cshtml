@@ -1,0 +1,37 @@
+﻿@model PraktyczneKursy.ViewModels.OrderConfirmationEmail
+Content-Type: text/html; charset=utf-8
+
+<html>
+    <body>
+        @Html.EmbedImage("~/Content/Images/logo.png")
+
+        <p>Thank you!</p>
+        <p>You have made an order in Praktyczne Kursy.</p>
+        <p>Ordered items:</p>
+        
+        @{
+            IEnumerable<PraktyczneKursy.Models.OrderItem> orderItems = Model.OrderItems;
+            for (int i = 0; i < orderItems.Count(); i++)
+            {
+                <p>
+                    @orderItems.ElementAt(i).Course.CourseTitle - @orderItems.ElementAt(i).Course.CourseAuthor
+                    - @orderItems.ElementAt(i).Course.CoursePrice
+                </p>
+            }
+        }
+        <p>Please make your payment: @Model.Value zł, title: order number - @Model.OrderNumber on our bank account:</p>
+        <p>Praktyczne Kursy test</p>
+        <p>ul. Test1</p>
+        <p>66-666 Test</p>
+        <p>PKO 6666 6666 6666 6666 6666</p>
+
+        <p>After receiving the payment we'll grant you full acces to your purchased courses.</p>
+        <p>Thank you and see you soon!</p>
+        <p>Praktyczne Kursy</p>
+    </body>
+</html>
+
+
+
+
+
