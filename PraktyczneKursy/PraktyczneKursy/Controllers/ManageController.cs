@@ -23,11 +23,17 @@ namespace PraktyczneKursy.Controllers
     public class ManageController : Controller
     {
         private CoursesContext db = new CoursesContext();
+        private IMailService mailService;
 
         public enum ManageMessageId
         {
             ChangePasswordSuccess,
             Error
+        }
+
+        public ManageController(IMailService mailService)
+        {
+            this.mailService = mailService;
         }
 
         private ApplicationUserManager _userManager;
@@ -170,6 +176,11 @@ namespace PraktyczneKursy.Controllers
             Order orderToBeModified = db.Orders.Find(order.OrderId);
             orderToBeModified.OrderState = order.OrderState;
             db.SaveChanges();
+
+            if (orderToBeModified.OrderState==OrderState.Finished)
+            {
+                this.mailService.SendFinishedOrderEmail(orderToBeModified);
+            }
 
             return order.OrderState;
         }

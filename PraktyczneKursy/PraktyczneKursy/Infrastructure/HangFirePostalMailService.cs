@@ -13,13 +13,20 @@ namespace PraktyczneKursy.Infrastructure
         public void SendOrderConfirmationEmail(Order order)
         {
             var urlHelper = new UrlHelper(HttpContext.Current.Request.RequestContext);
-            string url = urlHelper.Action("WyslaniePotwierdzenieZamowieniaEmail", "Manage", new { zamowienieId = order.OrderId, nazwisko = order.LastName}, HttpContext.Current.Request.Url.Scheme);
+            string url = urlHelper.Action("SendOrderConfirmationEmail", "Manage", new { orderId = order.OrderId, lastName = order.LastName}, HttpContext.Current.Request.Url.Scheme);
 
             BackgroundJob.Enqueue(() => MailSender.Call(url));
+            
+            //BackgroundJob.Schedule(() => System.Console.WriteLine("Test scheduled job"),TimeSpan.FromDays(1));
+            //RecurringJob.AddOrUpdate(() => System.Console.WriteLine("Test recuring job"), Cron.Daily);
+
         }
         public void SendFinishedOrderEmail(Order order)
         {
-            throw new NotImplementedException();
+            var urlHelper = new UrlHelper(HttpContext.Current.Request.RequestContext);
+            string url = urlHelper.Action("SendFinishedOrderEmail", "Manage", new { orderId = order.OrderId, lastName = order.LastName}, HttpContext.Current.Request.Url.Scheme);
+
+            BackgroundJob.Enqueue(() => MailSender.Call(url));
         }
 
     }

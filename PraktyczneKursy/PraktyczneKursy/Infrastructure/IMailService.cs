@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace PraktyczneKursy.Infrastructure
 {
-    interface IMailService
+    public interface IMailService
     {
         void SendOrderConfirmationEmail(Order order);
         void SendFinishedOrderEmail(Order order);

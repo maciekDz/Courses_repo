@@ -22,9 +22,12 @@ namespace PraktyczneKursy.Controllers
         private CartManager cartManager;
         private ISessionManager sessionManager { get; set; }
         private CoursesContext db;
+        private IMailService mailService;
 
-        public CartController()
+        public CartController(IMailService mailService)
         {
+            this.mailService = mailService;
+
             db = new CoursesContext();
             sessionManager = new SessionManager();
             cartManager = new CartManager(sessionManager, db);
@@ -115,10 +118,9 @@ namespace PraktyczneKursy.Controllers
 
                 cartManager.EmptyCart();
 
-                string url = Url.Action("OrderConfirmationEmail", "Cart", new { orderId = newOrder.OrderId, lastName = newOrder.LastName }, Request.Url.Scheme);
-                BackgroundJob.Enqueue(() => MailSender.Call(url));
-                //BackgroundJob.Schedule(() => System.Console.WriteLine("Test scheduled job"),TimeSpan.FromDays(1));
-                //RecurringJob.AddOrUpdate(() => System.Console.WriteLine("Test recuring job"), Cron.Daily);
+                mailService.SendOrderConfirmationEmail(newOrder);
+
+
                 return RedirectToAction("OrderConfirmation");
             }
             else

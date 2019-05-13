@@ -528,6 +528,9 @@
     <Content Include="Views\Emails\Web.config" />
     <Content Include="Views\Emails\OrderConfirmation.cshtml" />
     <Content Include="Views\Emails\OrderConfirmation.Text.cshtml" />
+    <Content Include="Views\Emails\FinishedOrder.cshtml" />
+    <Content Include="Views\Emails\FinishedOrder.Text.cshtml" />
+    <Content Include="Views\Emails\FinishedOrder.Html.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
